@@ -633,16 +633,6 @@ class Proxy implements ObjectManagerAwareInterface
         }
 
         if ($property = $this->property) {
-            if ($this->isMethod == false && !$metadata->hasField($property)) {
-                throw new RuntimeException(
-                    sprintf(
-                        'Property "%s" could not be found in object "%s"',
-                        $property,
-                        $targetClass
-                    )
-                );
-            }
-
             $getter = 'get' . ucfirst($property);
 
             if (!is_callable([$object, $getter])) {

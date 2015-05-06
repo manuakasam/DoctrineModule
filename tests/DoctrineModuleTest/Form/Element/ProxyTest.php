@@ -192,12 +192,8 @@ class ProxyTest extends PHPUnit_Framework_TestCase
 
         $this->proxy->setOptions(array('property' => 'password'));
 
-        $this->metadata->expects($this->exactly(2))
-            ->method('hasField')
-            ->with($this->equalTo('password'))
-            ->will($this->returnValue(true));
-
         $result = $this->proxy->getValueOptions();
+
         $this->assertEquals($result[0]['label'], 'object one password');
         $this->assertEquals($result[1]['label'], 'object two password');
         $this->assertEquals($result[0]['value'], 1);
@@ -210,14 +206,8 @@ class ProxyTest extends PHPUnit_Framework_TestCase
 
         $this->proxy->setOptions(array('property' => 'email'));
 
-        $this
-            ->metadata
-            ->expects($this->exactly(2))
-            ->method('hasField')
-            ->with($this->equalTo('email'))
-            ->will($this->returnValue(true));
-
         $result = $this->proxy->getValueOptions();
+
         $this->assertEquals($result[0]['label'], 'object one email');
         $this->assertEquals($result[1]['label'], 'object two email');
         $this->assertEquals($result[0]['value'], 1);
