@@ -550,7 +550,7 @@ class Proxy implements ObjectManagerAwareInterface
         }
 
         foreach ($objects as $key => $object) {
-            $label            = $this->extractLabelForValueOptions($object, $metadata, $targetClass);
+            $label            = $this->extractLabelForValueOptions($object, $targetClass);
             $optionAttributes = $this->extractOptionAttributesForValueOptions($object);
 
             if (count($identifier) > 1) {
@@ -618,15 +618,14 @@ class Proxy implements ObjectManagerAwareInterface
      *
      * In case of failure of any a RuntimeException will be thrown.
      *
-     * @param               $object
-     * @param ClassMetadata $metadata
-     * @param               $targetClass
+     * @param $object
+     * @param $targetClass
      *
      * @throws RuntimeException
      *
      * @return null|string
      */
-    protected function extractLabelForValueOptions($object, ClassMetadata $metadata, $targetClass)
+    protected function extractLabelForValueOptions($object, $targetClass)
     {
         if (null !== ($generatedLabel = $this->generateLabel($object))) {
             return $generatedLabel;
